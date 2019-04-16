@@ -1,5 +1,15 @@
 <div [class]="'checkbox' + (klass ? ' ' + klass : '')" widget>
-    <div class="box" [id]="id" style="overflow: visible" [class.active]="model" tabindex="0" (keyup.enter)="toggle()" (tapped)="toggle()" feedback [center]="true">
+    <div
+        class="box"
+        [id]="id"
+        style="overflow: visible"
+        [class.active]="state"
+        tabindex="0"
+        (keyup.enter)="toggle()"
+        (tapped)="toggle()"
+        feedback
+        [center]="true"
+    >
         <div class="icon done-icon"></div>
     </div>
     <label [for]="id" *ngIf="label" (tapped)="toggle()">{{ label }}</label>

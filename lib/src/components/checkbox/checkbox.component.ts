@@ -18,12 +18,11 @@ export class CheckboxComponent implements ControlValueAccessor {
     @Input() public id: string;
     /** CSS class to add to the root element of the component */
     @Input() public klass = 'default';
-    /** State of the checkbox */
-    @Input() public model: boolean;
     /** String to display next to the checkbox */
     @Input() public label: string;
-    /** Change emitter for the date timestamp */
-    @Output() public modelChange = new EventEmitter<boolean>();
+
+    /** Local state of the component */
+    public state: boolean;
 
     /** Form control on change handler */
     public onChange: (_: boolean) => void;
@@ -34,30 +33,31 @@ export class CheckboxComponent implements ControlValueAccessor {
      * Toggle state of the checkbox
      */
     public toggle() {
-        this.model = !this.model;
-        this.modelChange.emit(this.model);
+        this.state = !this.state;
+        if (this.onChange) {
+            this.onChange(this.state);
+        }
     }
 
     /**
      * Update local value when form control value is changed
-     * @param value
+     * @param value The new value for the component
      */
     public writeValue(value: boolean) {
-        this.model = value;
-        this.modelChange.emit(this.model);
+        this.state = value;
     }
 
     /**
-     * Register on change callback given for form control
-     * @param fn
+     * Registers a callback function that is called when the control's value changes in the UI.
+     * @param fn The callback function to register
      */
     public registerOnChange(fn: (_: boolean) => void): void {
         this.onChange = fn;
     }
 
     /**
-     * Register on touched callback given for form control
-     * @param fn
+     * Registers a callback function is called by the forms API on initialization to update the form model on blur.
+     * @param fn The callback function to register
      */
     public registerOnTouched(fn: (_: boolean) => void): void {
         this.onTouch = fn;
