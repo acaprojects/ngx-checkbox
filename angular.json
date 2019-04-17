@@ -79,6 +79,12 @@
             "styles": [
               "src/styles.css"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/shared",
+                "node_modules"
+              ]
+            },
             "assets": [
               "src/assets",
               "src/favicon.ico"
