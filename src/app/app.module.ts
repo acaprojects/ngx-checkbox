@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { CheckboxModule } from '../../lib/src/public_api';
+import { CheckboxModule } from '../lib/public_api';
 
 @NgModule({
   declarations: [
