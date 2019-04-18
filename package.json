@@ -18,6 +18,9 @@
       "entryFile": "src/lib/public_api.ts"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@acaprojects/ngx-custom-events": "^0.2.0",
     "dayjs": "^1.8.11"
